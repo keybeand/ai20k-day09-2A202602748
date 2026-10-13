@@ -1,13 +1,13 @@
 #!/bin/bash
-# Lá»‡nh ngáº¯n cho bÃ i lab (cháº¡y trÃªn mÃ¡y cá»§a báº¡n, thá»±c thi trong container Airflow Ä‘ang cháº¡y).
-#   scripts/lab.sh step <1..5|all> [--reset]   cháº¡y Tá»ªNG cáº¥u pháº§n, in káº¿t quáº£ vÃ  kiá»ƒm tra (step all = cáº£ pipeline)
-#   scripts/lab.sh exp <idempotency|break-gate|leakage|threshold>   thÃ­ nghiá»‡m, ghi báº±ng chá»©ng vÃ o report/evidence/
-#   scripts/lab.sh verify [--module N]     kiá»ƒm tra tá»± Ä‘á»™ng (27 kiá»ƒm tra, 5 module); --module 2 chá»‰ cháº¡y module 2
+# Lệnh ngắn cho bài lab (chạy trên máy của bạn, thực thi trong container Airflow đang chạy).
+#   scripts/lab.sh step <1..5|all> [--reset]   chạy TỪNG cấu phần, in kết quả và kiểm tra (step all = cả pipeline)
+#   scripts/lab.sh exp <idempotency|break-gate|leakage|threshold>   thí nghiệm, ghi bằng chứng vào report/evidence/
+#   scripts/lab.sh verify [--module N]     kiểm tra tự động (27 kiểm tra, 5 module); --module 2 chỉ chạy module 2
 #   scripts/lab.sh test                    unit test (dhash, blur_score...)
-#   scripts/lab.sh run [--reset]           cháº¡y cáº£ pipeline khÃ´ng qua Airflow (â‰ˆ 1 phÃºt)
-#   scripts/lab.sh cli <lá»‡nh> [tham sá»‘]    vÃ­ dá»¥: cli ingest --drive drive_a | cli history silver.frames | cli sql "select 1"
-#   scripts/lab.sh dbt <lá»‡nh> [tham sá»‘]    vÃ­ dá»¥: dbt run --select silver_telemetry | dbt test --select gold_dataset_frames
-#   scripts/lab.sh shell                   má»Ÿ shell trong container
+#   scripts/lab.sh run [--reset]           chạy cả pipeline không qua Airflow (≈ 1 phút)
+#   scripts/lab.sh cli <lệnh> [tham số]    ví dụ: cli ingest --drive drive_a | cli history silver.frames | cli sql "select 1"
+#   scripts/lab.sh dbt <lệnh> [tham số]    ví dụ: dbt run --select silver_telemetry | dbt test --select gold_dataset_frames
+#   scripts/lab.sh shell                   mở shell trong container
 set -e
 cd "$(dirname "$0")/.."
 PY=/home/airflow/lab-venv/bin/python
